@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
-import { siteConfig } from "@/content/site";
-import { studioPrinciples, studioProcessSteps } from "@/content/manifesto";
+import { studioPrinciples } from "@/content/manifesto";
 import { SiteHeader } from "@/components/layout/SiteHeader";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import { SectionHeading } from "@/components/content/SectionHeading";

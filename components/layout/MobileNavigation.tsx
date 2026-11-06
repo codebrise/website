@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import Link from "next/link";
-import { ArrowRight, X } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import type { NavItem } from "@/types/navigation";
 
 interface MobileNavigationProps {
