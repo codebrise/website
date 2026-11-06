@@ -9,6 +9,7 @@ import { ExploreCategories } from "@/components/home/ExploreCategories";
 import { StudioManifesto } from "@/components/home/StudioManifesto";
 import { StudioProcess } from "@/components/home/StudioProcess";
 import { OpenSourceSection } from "@/components/home/OpenSourceSection";
+import { ScrollReveal } from "@/components/motion/ScrollReveal";
 
 export default function HomePage() {
   const featuredProjects = getFeaturedProjects();
@@ -20,11 +21,21 @@ export default function HomePage() {
       <main id="top" className="flex-1">
         <HomeHero />
         <SignalStrip />
-        <FeaturedWork initialProjects={featuredProjects} />
-        <ExploreCategories />
-        <StudioManifesto />
-        <StudioProcess />
-        <OpenSourceSection />
+        <ScrollReveal>
+          <FeaturedWork initialProjects={featuredProjects} />
+        </ScrollReveal>
+        <ScrollReveal delay={1}>
+          <ExploreCategories />
+        </ScrollReveal>
+        <ScrollReveal>
+          <StudioManifesto />
+        </ScrollReveal>
+        <ScrollReveal delay={1}>
+          <StudioProcess />
+        </ScrollReveal>
+        <ScrollReveal>
+          <OpenSourceSection />
+        </ScrollReveal>
       </main>
       <SiteFooter />
     </>

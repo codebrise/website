@@ -19,7 +19,7 @@ export function HomeHero() {
 
         {/* Copy */}
         <div className="relative z-10 max-w-[560px]">
-          <div className="inline-flex items-center gap-2.5 mb-6 md:mb-7 text-[#C4CBD9] text-[9px] md:text-[10px] font-bold tracking-[0.17em] uppercase">
+          <div className="hero-animate-1 inline-flex items-center gap-2.5 mb-6 md:mb-7 text-[#C4CBD9] text-[9px] md:text-[10px] font-bold tracking-[0.17em] uppercase">
             <span
               className="w-2 h-2 rounded-full bg-cb-mint shadow-[0_0_0_5px_rgba(66,214,176,0.12)] shrink-0"
               aria-hidden="true"
@@ -29,7 +29,7 @@ export function HomeHero() {
 
           <h1
             id="hero-title"
-            className="text-[clamp(3.3rem,6.25vw,5.5rem)] font-medium leading-[0.99] tracking-[-0.075em]"
+            className="hero-animate-2 text-[clamp(3.3rem,6.25vw,5.5rem)] font-medium leading-[0.99] tracking-[-0.075em]"
           >
             We make
             <br />
@@ -40,12 +40,12 @@ export function HomeHero() {
             move forward.
           </h1>
 
-          <p className="mt-6 text-sm md:text-[15px] leading-[1.8] text-[#AEB6C4] max-w-[430px]">
+          <p className="hero-animate-3 mt-6 text-sm md:text-[15px] leading-[1.8] text-[#AEB6C4] max-w-[430px]">
             A small independent studio building thoughtful software, developer tools
             and experiments for people who like making things better.
           </p>
 
-          <div className="mt-8 flex flex-wrap items-center gap-5">
+          <div className="hero-animate-4 mt-8 flex flex-wrap items-center gap-5">
             <Link
               href="#work"
               className="inline-flex items-center justify-center gap-2.5 min-h-[48px] px-6 rounded-full bg-[#F7F6F2] text-cb-ink text-xs font-bold shadow-[0_8px_25px_rgba(0,0,0,0.15)] transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_15px_35px_rgba(0,0,0,0.22)] hover:bg-white"

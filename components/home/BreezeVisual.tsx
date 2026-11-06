@@ -47,7 +47,7 @@ export function BreezeVisual() {
         </div>
 
         {/* Central glowing translucent orb */}
-        <div className="absolute w-[155px] md:w-[195px] h-[155px] md:h-[195px] left-1/2 top-[49%] -translate-x-1/2 -translate-y-1/2 [transform:translate(-50%,-50%)_translateZ(55px)] rounded-full border border-white/25 bg-[radial-gradient(circle_at_30%_28%,rgba(255,255,255,0.26),rgba(166,183,255,0.11)_27%,rgba(55,82,160,0.08)_54%,rgba(5,10,28,0.06)_70%)] shadow-[inset_-22px_-22px_55px_rgba(4,8,26,0.55),inset_12px_12px_30px_rgba(255,255,255,0.13),0_0_80px_rgba(83,109,254,0.20)] backdrop-blur-[3px] animate-pulse">
+        <div className="breeze-orb-animated absolute w-[155px] md:w-[195px] h-[155px] md:h-[195px] left-1/2 top-[49%] -translate-x-1/2 -translate-y-1/2 [transform:translate(-50%,-50%)_translateZ(55px)] rounded-full border border-white/25 bg-[radial-gradient(circle_at_30%_28%,rgba(255,255,255,0.26),rgba(166,183,255,0.11)_27%,rgba(55,82,160,0.08)_54%,rgba(5,10,28,0.06)_70%)] shadow-[inset_-22px_-22px_55px_rgba(4,8,26,0.55),inset_12px_12px_30px_rgba(255,255,255,0.13),0_0_80px_rgba(83,109,254,0.20)] backdrop-blur-[3px]">
           <div className="absolute inset-4 rounded-full border border-white/15" />
           <div className="absolute left-6 top-5 w-14 h-8 rounded-full bg-white/25 blur-[14px] -rotate-[32deg]" />
         </div>
@@ -92,15 +92,15 @@ export function BreezeVisual() {
         </svg>
 
         {/* Tactile floating micro-chips */}
-        <div className="absolute top-12 md:top-20 left-1 md:left-2 z-10 flex items-center gap-2 px-3 py-2 rounded-xl border border-white/15 bg-[#131B2F]/80 text-[#E9EDF7] text-[8px] md:text-[9px] shadow-lg backdrop-blur-md [transform:translateZ(150px)]">
+        <div className="chip-float-a absolute top-12 md:top-20 left-1 md:left-2 z-10 flex items-center gap-2 px-3 py-2 rounded-xl border border-white/15 bg-[#131B2F]/80 text-[#E9EDF7] text-[8px] md:text-[9px] shadow-lg backdrop-blur-md [transform:translateZ(150px)]">
           <span className="w-1.5 h-1.5 rounded-full bg-cb-cyan shadow-[0_0_10px_#32C7D0]" />
           Ideas in motion
         </div>
-        <div className="absolute bottom-12 md:bottom-20 right-0 z-10 flex items-center gap-2 px-3 py-2 rounded-xl border border-white/15 bg-[#131B2F]/80 text-[#E9EDF7] text-[8px] md:text-[9px] shadow-lg backdrop-blur-md [transform:translateZ(125px)]">
+        <div className="chip-float-b absolute bottom-12 md:bottom-20 right-0 z-10 flex items-center gap-2 px-3 py-2 rounded-xl border border-white/15 bg-[#131B2F]/80 text-[#E9EDF7] text-[8px] md:text-[9px] shadow-lg backdrop-blur-md [transform:translateZ(125px)]">
           <span className="w-1.5 h-1.5 rounded-full bg-cb-cyan shadow-[0_0_10px_#32C7D0]" />
           Made with intention
         </div>
-        <div className="absolute top-6 md:top-10 right-6 md:right-11 z-10 flex items-center gap-2 px-3 py-2 rounded-xl border border-white/15 bg-[#131B2F]/80 text-[#E9EDF7] text-[8px] md:text-[9px] shadow-lg backdrop-blur-md [transform:translateZ(190px)]">
+        <div className="chip-float-c absolute top-6 md:top-10 right-6 md:right-11 z-10 flex items-center gap-2 px-3 py-2 rounded-xl border border-white/15 bg-[#131B2F]/80 text-[#E9EDF7] text-[8px] md:text-[9px] shadow-lg backdrop-blur-md [transform:translateZ(190px)]">
           <span className="w-1.5 h-1.5 rounded-full bg-cb-cyan shadow-[0_0_10px_#32C7D0]" />
           Small by design
         </div>
