@@ -1,10 +1,12 @@
+"use client";
+
 import * as React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { footerNavigation, siteConfig } from "@/content/site";
 
 export function SiteFooter() {
-  const currentYear = new Date().getFullYear();
+  const currentYear = 2026;
 
   return (
     <footer className="site-shell pt-10 pb-8 mt-auto">
