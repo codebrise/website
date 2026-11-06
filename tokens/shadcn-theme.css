@@ -1,0 +1,44 @@
+/* Copy these semantic variables into globals.css after reviewing the CodeBrise tokens. */
+:root {
+  --background: 42 18% 94%;
+  --foreground: 220 23% 9%;
+  --card: 45 33% 98%;
+  --card-foreground: 220 23% 9%;
+  --popover: 45 33% 98%;
+  --popover-foreground: 220 23% 9%;
+  --primary: 249 97% 67%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 43 18% 89%;
+  --secondary-foreground: 220 23% 13%;
+  --muted: 43 14% 90%;
+  --muted-foreground: 216 8% 43%;
+  --accent: 178 61% 92%;
+  --accent-foreground: 220 23% 13%;
+  --destructive: 0 74% 55%;
+  --destructive-foreground: 0 0% 100%;
+  --border: 40 12% 83%;
+  --input: 40 12% 83%;
+  --ring: 249 97% 67%;
+  --radius: 1.125rem;
+}
+.dark {
+  --background: 224 39% 8%;
+  --foreground: 220 20% 96%;
+  --card: 220 30% 12%;
+  --card-foreground: 220 20% 96%;
+  --popover: 220 30% 12%;
+  --popover-foreground: 220 20% 96%;
+  --primary: 249 97% 72%;
+  --primary-foreground: 224 39% 8%;
+  --secondary: 220 20% 17%;
+  --secondary-foreground: 220 20% 96%;
+  --muted: 220 20% 17%;
+  --muted-foreground: 218 12% 67%;
+  --accent: 183 42% 20%;
+  --accent-foreground: 180 70% 90%;
+  --destructive: 0 63% 42%;
+  --destructive-foreground: 0 0% 100%;
+  --border: 220 18% 23%;
+  --input: 220 18% 23%;
+  --ring: 249 97% 72%;
+}

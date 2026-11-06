@@ -1,0 +1,59 @@
+{
+  "brand": {
+    "name": "CodeBrise",
+    "tagline": "Build. Experiment. Release.",
+    "meaning": "Code + Brise (French for breeze)",
+    "logoPolicy": "Use the approved lockup image as supplied. Do not redraw or modify any logo stroke."
+  },
+  "color": {
+    "brand": {
+      "violet": "#8057F5",
+      "blue": "#536DFE",
+      "cyan": "#32C7D0",
+      "mint": "#42D6B0",
+      "gradient": "linear-gradient(112deg, #8057F5 0%, #536DFE 56%, #32C7D0 100%)"
+    },
+    "surface": {
+      "paper": "#F1EFE9",
+      "paperRaised": "#FAF9F6",
+      "paperMuted": "#E8E5DD",
+      "night": "#0B1020",
+      "nightRaised": "#151D2B"
+    },
+    "text": {
+      "ink": "#11151D",
+      "inkRaised": "#202633",
+      "muted": "#69717D",
+      "mutedOnDark": "#AEB6C4"
+    },
+    "border": "#D8D5CD"
+  },
+  "typography": {
+    "sans": "DM Sans",
+    "display": "Instrument Serif",
+    "mono": "SFMono-Regular / Consolas",
+    "displayXL": "clamp(3.5rem, 6.25vw, 5.5rem)",
+    "sectionHeading": "clamp(2.625rem, 5.1vw, 4.25rem)",
+    "body": "0.8125rem / 1.85",
+    "eyebrow": "0.625rem / 700 / 0.16em"
+  },
+  "radius": {
+    "sm": "10px",
+    "md": "18px",
+    "lg": "26px",
+    "xl": "34px",
+    "pill": "999px"
+  },
+  "motion": {
+    "easing": "cubic-bezier(.22,.8,.24,1)",
+    "fast": "180ms",
+    "medium": "420ms",
+    "slow": "900ms",
+    "reducedMotion": "Respect prefers-reduced-motion and provide static fallbacks."
+  },
+  "layout": {
+    "maxWidth": "1240px",
+    "gutter": "clamp(20px, 5vw, 76px)",
+    "spacingBase": "4px"
+  }
+}

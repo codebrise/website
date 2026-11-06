@@ -1,0 +1,87 @@
+:root {
+  /* CodeBrise identity */
+  --cb-violet: #8057F5;
+  --cb-blue: #536DFE;
+  --cb-cyan: #32C7D0;
+  --cb-mint: #42D6B0;
+  --cb-brand-gradient: linear-gradient(112deg, #8057F5 0%, #536DFE 56%, #32C7D0 100%);
+
+  /* Editorial light surfaces */
+  --cb-paper: #F1EFE9;
+  --cb-paper-raised: #FAF9F6;
+  --cb-paper-muted: #E8E5DD;
+  --cb-ink: #11151D;
+  --cb-ink-raised: #202633;
+  --cb-text-muted: #69717D;
+  --cb-border: #D8D5CD;
+
+  /* Dark surfaces */
+  --cb-night: #0B1020;
+  --cb-night-raised: #151D2B;
+  --cb-night-muted: #AEB6C4;
+
+  /* Typography */
+  --cb-font-sans: "DM Sans", "Helvetica Neue", Arial, sans-serif;
+  --cb-font-display: "Instrument Serif", Georgia, "Times New Roman", serif;
+  --cb-font-mono: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+
+  /* Shape and depth */
+  --cb-radius-sm: 10px;
+  --cb-radius-md: 18px;
+  --cb-radius-lg: 26px;
+  --cb-radius-xl: 34px;
+  --cb-radius-pill: 999px;
+  --cb-shadow-soft: 0 12px 34px rgba(26,31,43,.07);
+  --cb-shadow-card: 0 24px 70px rgba(26,31,43,.10);
+  --cb-shadow-float: 0 28px 80px rgba(5,11,27,.34);
+
+  /* Motion */
+  --cb-ease-standard: cubic-bezier(.22,.8,.24,1);
+  --cb-duration-fast: 180ms;
+  --cb-duration-medium: 420ms;
+  --cb-duration-slow: 900ms;
+
+  /* shadcn-compatible HSL semantic tokens */
+  --background: 42 18% 94%;
+  --foreground: 220 23% 9%;
+  --card: 45 33% 98%;
+  --card-foreground: 220 23% 9%;
+  --popover: 45 33% 98%;
+  --popover-foreground: 220 23% 9%;
+  --primary: 249 97% 67%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 43 18% 89%;
+  --secondary-foreground: 220 23% 13%;
+  --muted: 43 14% 90%;
+  --muted-foreground: 216 8% 43%;
+  --accent: 178 61% 92%;
+  --accent-foreground: 220 23% 13%;
+  --destructive: 0 74% 55%;
+  --destructive-foreground: 0 0% 100%;
+  --border: 40 12% 83%;
+  --input: 40 12% 83%;
+  --ring: 249 97% 67%;
+  --radius: 1.125rem;
+}
+
+.dark {
+  --background: 224 39% 8%;
+  --foreground: 220 20% 96%;
+  --card: 220 30% 12%;
+  --card-foreground: 220 20% 96%;
+  --popover: 220 30% 12%;
+  --popover-foreground: 220 20% 96%;
+  --primary: 249 97% 72%;
+  --primary-foreground: 224 39% 8%;
+  --secondary: 220 20% 17%;
+  --secondary-foreground: 220 20% 96%;
+  --muted: 220 20% 17%;
+  --muted-foreground: 218 12% 67%;
+  --accent: 183 42% 20%;
+  --accent-foreground: 180 70% 90%;
+  --destructive: 0 63% 42%;
+  --destructive-foreground: 0 0% 100%;
+  --border: 220 18% 23%;
+  --input: 220 18% 23%;
+  --ring: 249 97% 72%;
+}
