@@ -1,36 +1,131 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# CodeBrise Public Website
 
-## Getting Started
+> **Build. Experiment. Release.**  
+> Official public website and studio catalogue for CodeBrise — an independent software studio combining editorial clarity, tactile digital craft, and deliberate software engineering.
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## 1. Architecture Overview
+
+- **Framework**: Next.js 16 (App Router)
+- **Language**: TypeScript (strict mode)
+- **Styling**: Tailwind CSS v4 & custom design tokens
+- **Primitives**: shadcn/ui & @base-ui/react
+- **Typography**: DM Sans (Sans), Instrument Serif (Display), System Monospace
+- **Deployment**: Static Generation (`next build`)
+
+---
+
+## 2. Directory Structure
+
+```text
+website/
+├── app/                  # Next.js App Router pages and metadata
+│   ├── layout.tsx        # Root layout, fonts, SEO, JSON-LD
+│   ├── page.tsx          # Editorial homepage modules
+│   ├── globals.css       # Design tokens & semantic variables
+│   ├── work/             # Portfolio directory & [slug] routes
+│   ├── products/         # Software & products page
+│   ├── developer-tools/  # Developer tools & utilities page
+│   ├── apps-and-games/   # Apps & games exploration page
+│   ├── experiments/      # Lab experiments & CSS 3D explorations
+│   ├── open-source/      # Public open-source tooling page
+│   ├── updates/          # Studio dispatches & fieldnotes
+│   ├── about/            # Studio background & principles
+│   ├── contact/          # Direct inquiry channels
+│   ├── sitemap.ts        # Dynamic sitemap generator
+│   └── robots.ts         # Robots.txt configuration
+├── components/           # Feature-based modular components
+│   ├── layout/           # Header, footer, announcement, mobile nav
+│   ├── home/             # Hero, 3D breeze artwork, workbench, manifesto
+│   ├── projects/         # Project card, status pills, tactile visuals
+│   ├── content/          # Eyebrow, section headings, metadata labels
+│   ├── motion/           # Accessible scroll reveal & transitions
+│   └── ui/               # Tailored shadcn base components
+├── content/              # Typed project records & collections
+│   ├── products/         # Individual TypeScript product files
+│   ├── open-source/      # Open-source repository entries
+│   ├── experiments/      # Lab experiment records
+│   ├── categories.ts     # Studio category definitions
+│   ├── manifesto.ts      # Studio principles and 3-step process
+│   └── site.ts           # Site navigation and studio metadata
+├── features/             # Domain feature modules
+│   └── project-catalog/  # Client-side filtering & search
+├── lib/                  # Reusable utilities and content registry
+│   ├── content-registry.ts    # Access helpers (all, featured, slug)
+│   ├── content-validation.ts  # Lifecycle rules & status formatting
+│   ├── seo.ts                 # Schema.org structured data
+│   └── utils.ts               # ClassName combiner
+├── public/               # Static assets
+│   ├── brand/            # Official unredrawn logo lockups and marks
+│   ├── favicons/         # Multi-size favicons and SVG mark
+│   └── og-image.png      # High-resolution social preview image
+├── styles/               # Animation keyframes & motion rules
+└── types/                # Strongly-typed data models
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 3. Content-Driven Workflow: Adding a New Product
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Adding a new product or project requires **zero changes to UI components**:
 
-## Learn More
+1. Create a new TypeScript file under `content/products/<slug>.ts`:
 
-To learn more about Next.js, take a look at the following resources:
+```ts
+import type { Project } from "@/types/project";
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+export const myNewProject: Project = {
+  slug: "my-new-project",
+  name: "My New Project",
+  tagline: "One punchy sentence describing the core purpose.",
+  summary: "A concise two-sentence overview of the project.",
+  kind: "software", // "software" | "developer-tool" | "open-source" | "experiment" ...
+  status: "in-development", // "concept" | "exploring" | "in-development" | "live"
+  featured: true,
+  visibility: "public",
+  order: 4,
+  tags: ["Tag 1", "Tag 2"],
+  platforms: ["web", "api"],
+  links: {
+    website: "https://example.com",
+    repository: "https://github.com/codebrise/repo",
+  },
+  assets: {
+    visualComponent: "default",
+  },
+  features: ["Key benefit 1", "Key benefit 2"],
+  releaseDate: "2026",
+};
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+2. Export it in `content/products/index.ts`:
 
-## Deploy on Vercel
+```ts
+import { myNewProject } from "./my-new-project";
+export const products = [jobwhistle, sliprow, formspindle, myNewProject];
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+3. Run `pnpm run build`. The project will automatically:
+   - Appear in the workbench grid (if `featured: true`)
+   - Appear in `/work` with live searching and category filtering
+   - Generate a dedicated static detail page at `/work/my-new-project`
+   - Be added to `/sitemap.xml` and structured JSON-LD data
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+
+## 4. Development & Production Build
+
+```bash
+# Install dependencies
+pnpm install
+
+# Start local development server
+pnpm run dev
+
+# Run TypeScript type check
+pnpm exec tsc --noEmit
+
+# Create static production build
+pnpm run build
+```

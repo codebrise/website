@@ -65,16 +65,26 @@ export const metadata: Metadata = {
   },
 };
 
+import { generateStudioJsonLd } from "@/lib/seo";
+
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const jsonLd = generateStudioJsonLd();
+
   return (
     <html
       lang="en"
       className={`${dmSans.variable} ${instrumentSerif.variable} antialiased scroll-smooth`}
     >
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      </head>
       <body className="min-h-screen flex flex-col bg-[#F1EFE9] text-[#11151D] font-sans selection:bg-[#8057F5]/20 selection:text-[#11151D]">
         {children}
       </body>
