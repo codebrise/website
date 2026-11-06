@@ -70,3 +70,4 @@ export function searchProjects(query: string): Project[] {
     );
   });
 }
+

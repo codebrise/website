@@ -26,3 +26,4 @@ export function MetadataLabel({
     </span>
   );
 }
+

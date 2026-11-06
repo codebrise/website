@@ -38,3 +38,4 @@ export const categories: CategoryDefinition[] = [
     iconName: "Share2",
   },
 ];
+

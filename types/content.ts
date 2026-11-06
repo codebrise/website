@@ -32,3 +32,4 @@ export interface StudioUpdate {
   content?: string;
   author?: string;
 }
+

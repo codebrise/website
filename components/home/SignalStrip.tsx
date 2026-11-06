@@ -37,3 +37,4 @@ export function SignalStrip() {
     </div>
   );
 }
+

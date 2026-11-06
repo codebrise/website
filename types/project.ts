@@ -62,3 +62,4 @@ export interface Project {
   categoryLabel?: string;
   badgeNumber?: string;
 }
+

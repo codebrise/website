@@ -19,3 +19,4 @@ export interface SiteMetadata {
   twitterHandle?: string;
   githubUrl: string;
 }
+

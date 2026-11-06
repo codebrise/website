@@ -81,3 +81,4 @@ export function ProjectMetaSidebar({ project }: ProjectMetaSidebarProps) {
     </aside>
   );
 }
+

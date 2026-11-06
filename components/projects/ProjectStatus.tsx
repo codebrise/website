@@ -22,3 +22,4 @@ export function ProjectStatus({ status, className }: ProjectStatusProps) {
     </span>
   );
 }
+

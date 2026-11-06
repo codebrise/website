@@ -26,3 +26,4 @@ export const spatialWind: Project = {
   ],
   releaseDate: "2026",
 };
+

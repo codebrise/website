@@ -46,3 +46,4 @@ export const studioProcessSteps: StudioProcessStep[] = [
       "Share the work, learn from real use and improve what proves worth keeping.",
   },
 ];
+

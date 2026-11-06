@@ -88,3 +88,4 @@ export function FeaturedWork({ initialProjects }: FeaturedWorkProps) {
     </section>
   );
 }
+

@@ -29,3 +29,4 @@ export const studioUpdates: StudioUpdate[] = [
     author: "CodeBrise Studio",
   },
 ];
+
