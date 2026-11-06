@@ -29,7 +29,7 @@ export function HomeHero() {
 
           <h1
             id="hero-title"
-            className="hero-animate-2 text-[clamp(3.3rem,6.25vw,5.5rem)] font-medium leading-[0.99] tracking-[-0.075em]"
+            className="hero-animate-2 text-[clamp(2.5rem,8.5vw,5.5rem)] font-medium leading-[0.99] tracking-[-0.075em]"
           >
             We make
             <br />
@@ -45,7 +45,7 @@ export function HomeHero() {
             and experiments for people who like making things better.
           </p>
 
-          <div className="hero-animate-4 mt-8 flex flex-wrap items-center gap-5">
+          <div className="hero-animate-4 mt-8 flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-5">
             <Link
               href="#work"
               className="inline-flex items-center justify-center gap-2.5 min-h-[48px] px-6 rounded-full bg-[#F7F6F2] text-cb-ink text-xs font-bold shadow-[0_8px_25px_rgba(0,0,0,0.15)] transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_15px_35px_rgba(0,0,0,0.22)] hover:bg-white"

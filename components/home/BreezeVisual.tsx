@@ -25,7 +25,7 @@ export function BreezeVisual() {
 
   return (
     <div
-      className="relative min-h-[340px] md:min-h-[470px] grid place-items-center [perspective:1100px] [transform-style:preserve-3d] select-none"
+      className="relative min-h-[340px] md:min-h-[470px] grid place-items-center [perspective:1100px] [transform-style:preserve-3d] select-none overflow-hidden"
       aria-label="Abstract three-dimensional breeze field artwork"
       role="img"
       onPointerMove={handlePointerMove}
