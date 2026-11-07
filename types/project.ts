@@ -41,6 +41,13 @@ export interface ProjectAssets {
   visualComponent?: "jobwhistle" | "sliprow" | "formspindle" | "default";
 }
 
+export interface ProjectSeo {
+  indexable?: boolean;
+  follow?: boolean;
+  ogImage?: string;
+  canonical?: string;
+}
+
 export interface Project {
   slug: string;
   name: string;
@@ -56,10 +63,10 @@ export interface Project {
   platforms?: ProjectPlatform[];
   links: ProjectLinks;
   assets: ProjectAssets;
+  seo?: ProjectSeo;
   releaseDate?: string;
   updatedAt?: string;
   features?: string[];
   categoryLabel?: string;
   badgeNumber?: string;
 }
-

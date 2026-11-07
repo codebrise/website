@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import { siteConfig } from "@/content/site";
+import { siteConfig, getCanonicalUrl } from "@/content/site";
+import { generateBreadcrumbJsonLd } from "@/lib/seo";
 import { SiteHeader } from "@/components/layout/SiteHeader";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import { SectionHeading } from "@/components/content/SectionHeading";
@@ -9,11 +10,37 @@ export const metadata: Metadata = {
   title: "Contact the Studio",
   description:
     "Get in touch with CodeBrise for questions, feedback, open-source discussions, or collaboration.",
+  alternates: {
+    canonical: getCanonicalUrl("/contact"),
+  },
+  openGraph: {
+    title: "Contact the Studio | CodeBrise",
+    description:
+      "Get in touch with CodeBrise for questions, feedback, open-source discussions, or collaboration.",
+    url: getCanonicalUrl("/contact"),
+    images: ["/og-image.png"],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Contact the Studio | CodeBrise",
+    description:
+      "Get in touch with CodeBrise for questions, feedback, open-source discussions, or collaboration.",
+    images: ["/og-image.png"],
+  },
 };
 
 export default function ContactPage() {
+  const breadcrumbJsonLd = generateBreadcrumbJsonLd([
+    { name: "Home", path: "/" },
+    { name: "Contact", path: "/contact" },
+  ]);
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
       <SiteHeader />
       <main className="flex-1 py-12 md:py-16">
         <div className="site-shell max-w-4xl">

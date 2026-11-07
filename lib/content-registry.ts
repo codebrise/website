@@ -2,7 +2,11 @@ import type { Project, ProjectKind, ProjectStatus } from "@/types/project";
 import { products } from "@/content/products";
 import { openSourceProjects } from "@/content/open-source";
 import { experiments } from "@/content/experiments";
-import { isPublicProject, isFeaturedProject } from "./content-validation";
+import {
+  isPublicProject,
+  isFeaturedProject,
+  isIndexableProject,
+} from "./content-validation";
 
 export const allProjects: Project[] = [
   ...products,
@@ -18,6 +22,10 @@ export function getPublicProjects(): Project[] {
   return allProjects
     .filter(isPublicProject)
     .sort((a, b) => (a.order ?? 99) - (b.order ?? 99));
+}
+
+export function getIndexableProjects(): Project[] {
+  return getPublicProjects().filter(isIndexableProject);
 }
 
 export function getFeaturedProjects(): Project[] {
@@ -70,4 +78,3 @@ export function searchProjects(query: string): Project[] {
     );
   });
 }
-

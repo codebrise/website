@@ -1,5 +1,8 @@
 import type { Metadata, Viewport } from "next";
+import Script from "next/script";
 import { DM_Sans, Instrument_Serif } from "next/font/google";
+import { siteConfig, getSiteUrl, getCanonicalUrl } from "@/content/site";
+import { generateStudioJsonLd, generateWebSiteJsonLd } from "@/lib/seo";
 import "./globals.css";
 
 const dmSans = DM_Sans({
@@ -24,13 +27,15 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://codebrise.com"),
+  metadataBase: new URL(getSiteUrl()),
   title: {
-    default: "CodeBrise — Build. Experiment. Release.",
-    template: "%s | CodeBrise",
+    default: siteConfig.defaultTitle,
+    template: siteConfig.titleTemplate,
   },
-  description:
-    "CodeBrise is an independent software studio building useful products, thoughtful developer tools and open experiments.",
+  description: siteConfig.description,
+  alternates: {
+    canonical: getCanonicalUrl("/"),
+  },
   icons: {
     icon: [
       { url: "/favicons/favicon-32.png", sizes: "32x32", type: "image/png" },
@@ -40,39 +45,56 @@ export const metadata: Metadata = {
     apple: "/favicons/favicon-192.png",
   },
   openGraph: {
-    title: "CodeBrise — Build. Experiment. Release.",
-    description:
-      "Independent software studio building useful products, thoughtful developer tools and open experiments.",
-    url: "https://codebrise.com",
-    siteName: "CodeBrise",
+    title: siteConfig.defaultTitle,
+    description: siteConfig.description,
+    url: getCanonicalUrl("/"),
+    siteName: siteConfig.name,
     images: [
       {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "CodeBrise — Independent Software Studio",
+        alt: `${siteConfig.name} — ${siteConfig.tagline}`,
       },
     ],
-    locale: "en_US",
+    locale: siteConfig.locale,
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "CodeBrise — Build. Experiment. Release.",
-    description:
-      "Independent software studio building useful products, thoughtful developer tools and open experiments.",
+    title: siteConfig.defaultTitle,
+    description: siteConfig.description,
     images: ["/og-image.png"],
   },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+  verification: {
+    google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION || undefined,
+    other: {
+      ...(process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION
+        ? { "msvalidate.01": process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION }
+        : {}),
+    },
+  },
 };
-
-import { generateStudioJsonLd } from "@/lib/seo";
 
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  const jsonLd = generateStudioJsonLd();
+  const studioJsonLd = generateStudioJsonLd();
+  const webSiteJsonLd = generateWebSiteJsonLd();
+  const cfToken = process.env.NEXT_PUBLIC_CLOUDFLARE_ANALYTICS_TOKEN;
 
   return (
     <html
@@ -82,11 +104,22 @@ export default function RootLayout({
       <head>
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(studioJsonLd) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(webSiteJsonLd) }}
         />
       </head>
       <body className="min-h-screen flex flex-col bg-[#F1EFE9] text-[#11151D] font-sans selection:bg-[#8057F5]/20 selection:text-[#11151D]">
         {children}
+        {cfToken && (
+          <Script
+            src="https://static.cloudflareinsights.com/beacon.min.js"
+            data-cf-beacon={JSON.stringify({ token: cfToken })}
+            strategy="lazyOnload"
+          />
+        )}
       </body>
     </html>
   );

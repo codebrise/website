@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { getProjectsByKind } from "@/lib/content-registry";
+import { getCanonicalUrl } from "@/content/site";
+import { generateBreadcrumbJsonLd } from "@/lib/seo";
 import { SiteHeader } from "@/components/layout/SiteHeader";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import { SectionHeading } from "@/components/content/SectionHeading";
@@ -9,13 +11,38 @@ export const metadata: Metadata = {
   title: "Experiments — Studio Lab",
   description:
     "Spatial experiments, CSS 3D explorations, and creative research from the CodeBrise lab.",
+  alternates: {
+    canonical: getCanonicalUrl("/experiments"),
+  },
+  openGraph: {
+    title: "Experiments — Studio Lab | CodeBrise",
+    description:
+      "Spatial experiments, CSS 3D explorations, and creative research from the CodeBrise lab.",
+    url: getCanonicalUrl("/experiments"),
+    images: ["/og-image.png"],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Experiments — Studio Lab | CodeBrise",
+    description:
+      "Spatial experiments, CSS 3D explorations, and creative research from the CodeBrise lab.",
+    images: ["/og-image.png"],
+  },
 };
 
 export default function ExperimentsPage() {
   const experiments = getProjectsByKind("experiment");
+  const breadcrumbJsonLd = generateBreadcrumbJsonLd([
+    { name: "Home", path: "/" },
+    { name: "Experiments", path: "/experiments" },
+  ]);
 
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
       <SiteHeader />
       <main className="flex-1 py-12 md:py-16">
         <div className="site-shell">

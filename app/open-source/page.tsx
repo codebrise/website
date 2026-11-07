@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { getProjectsByKind } from "@/lib/content-registry";
-import { siteConfig } from "@/content/site";
+import { siteConfig, getCanonicalUrl } from "@/content/site";
+import { generateBreadcrumbJsonLd } from "@/lib/seo";
 import { SiteHeader } from "@/components/layout/SiteHeader";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import { SectionHeading } from "@/components/content/SectionHeading";
@@ -11,13 +12,38 @@ export const metadata: Metadata = {
   title: "Open Source — Shared Software",
   description:
     "Open libraries, design systems, and public tooling built by CodeBrise for the community.",
+  alternates: {
+    canonical: getCanonicalUrl("/open-source"),
+  },
+  openGraph: {
+    title: "Open Source — Shared Software | CodeBrise",
+    description:
+      "Open libraries, design systems, and public tooling built by CodeBrise for the community.",
+    url: getCanonicalUrl("/open-source"),
+    images: ["/og-image.png"],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Open Source — Shared Software | CodeBrise",
+    description:
+      "Open libraries, design systems, and public tooling built by CodeBrise for the community.",
+    images: ["/og-image.png"],
+  },
 };
 
 export default function OpenSourcePage() {
   const projects = getProjectsByKind("open-source");
+  const breadcrumbJsonLd = generateBreadcrumbJsonLd([
+    { name: "Home", path: "/" },
+    { name: "Open Source", path: "/open-source" },
+  ]);
 
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
       <SiteHeader />
       <main className="flex-1 py-12 md:py-16">
         <div className="site-shell">

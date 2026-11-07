@@ -5,6 +5,9 @@ import {
   getProjectBySlug,
   getRelatedProjects,
 } from "@/lib/content-registry";
+import { isIndexableProject } from "@/lib/content-validation";
+import { getCanonicalUrl } from "@/content/site";
+import { generateBreadcrumbJsonLd, generateProjectJsonLd } from "@/lib/seo";
 import { SiteHeader } from "@/components/layout/SiteHeader";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import { ProjectDetailHeader } from "@/components/projects/ProjectDetailHeader";
@@ -30,9 +33,32 @@ export async function generateMetadata({
   const project = getProjectBySlug(slug);
   if (!project) return { title: "Project Not Found" };
 
+  const projectUrl = getCanonicalUrl(`/work/${project.slug}`);
+  const ogImage = project.seo?.ogImage || project.assets.cover || "/og-image.png";
+
   return {
     title: `${project.name} — ${project.tagline}`,
     description: project.summary,
+    alternates: {
+      canonical: projectUrl,
+    },
+    openGraph: {
+      title: `${project.name} — ${project.tagline} | CodeBrise`,
+      description: project.summary,
+      url: projectUrl,
+      images: [ogImage],
+      type: "article",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${project.name} — ${project.tagline} | CodeBrise`,
+      description: project.summary,
+      images: [ogImage],
+    },
+    robots: {
+      index: isIndexableProject(project),
+      follow: true,
+    },
   };
 }
 
@@ -43,6 +69,12 @@ export default async function ProjectDetailPage({ params }: PageProps) {
   if (!project) notFound();
 
   const related = getRelatedProjects(project.slug, 3);
+  const breadcrumbJsonLd = generateBreadcrumbJsonLd([
+    { name: "Home", path: "/" },
+    { name: "Selected Work", path: "/work" },
+    { name: project.name, path: `/work/${project.slug}` },
+  ]);
+  const projectJsonLd = generateProjectJsonLd(project);
 
   const renderVisual = () => {
     if (project.assets.visualComponent === "jobwhistle") {
@@ -71,6 +103,14 @@ export default async function ProjectDetailPage({ params }: PageProps) {
 
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(projectJsonLd) }}
+      />
       <SiteHeader />
       <main className="flex-1 py-12 md:py-16">
         <article className="site-shell flex flex-col gap-12">

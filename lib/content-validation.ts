@@ -8,6 +8,14 @@ export function isFeaturedProject(project: Project): boolean {
   return isPublicProject(project) && project.featured === true;
 }
 
+export function isIndexableProject(project: Project): boolean {
+  if (!isPublicProject(project)) return false;
+  if (project.seo?.indexable !== undefined) return project.seo.indexable;
+  // Concept-only sketches should not become thin indexed pages unless explicitly flagged
+  if (project.status === "concept") return false;
+  return true;
+}
+
 export function canVisitLive(status: ProjectStatus): boolean {
   return status === "live";
 }
@@ -32,4 +40,3 @@ export function formatStatusLabel(status: ProjectStatus): string {
       return status;
   }
 }
-

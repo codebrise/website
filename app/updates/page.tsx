@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { studioUpdates } from "@/content/updates";
+import { getCanonicalUrl } from "@/content/site";
+import { generateBreadcrumbJsonLd } from "@/lib/seo";
 import { SiteHeader } from "@/components/layout/SiteHeader";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import { SectionHeading } from "@/components/content/SectionHeading";
@@ -8,11 +10,37 @@ export const metadata: Metadata = {
   title: "Studio Updates — Fieldnotes & Releases",
   description:
     "Chronological dispatches, release notes, and architecture notes from CodeBrise.",
+  alternates: {
+    canonical: getCanonicalUrl("/updates"),
+  },
+  openGraph: {
+    title: "Studio Updates — Fieldnotes & Releases | CodeBrise",
+    description:
+      "Chronological dispatches, release notes, and architecture notes from CodeBrise.",
+    url: getCanonicalUrl("/updates"),
+    images: ["/og-image.png"],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Studio Updates — Fieldnotes & Releases | CodeBrise",
+    description:
+      "Chronological dispatches, release notes, and architecture notes from CodeBrise.",
+    images: ["/og-image.png"],
+  },
 };
 
 export default function UpdatesPage() {
+  const breadcrumbJsonLd = generateBreadcrumbJsonLd([
+    { name: "Home", path: "/" },
+    { name: "Studio Updates", path: "/updates" },
+  ]);
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
       <SiteHeader />
       <main className="flex-1 py-12 md:py-16">
         <div className="site-shell">

@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { studioPrinciples } from "@/content/manifesto";
+import { getCanonicalUrl } from "@/content/site";
+import { generateBreadcrumbJsonLd } from "@/lib/seo";
 import { SiteHeader } from "@/components/layout/SiteHeader";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import { SectionHeading } from "@/components/content/SectionHeading";
@@ -8,11 +10,37 @@ export const metadata: Metadata = {
   title: "About the Studio — Principles & Craft",
   description:
     "CodeBrise is an independent software studio combining editorial clarity, tactile digital craft, and deliberate software engineering.",
+  alternates: {
+    canonical: getCanonicalUrl("/about"),
+  },
+  openGraph: {
+    title: "About the Studio — Principles & Craft | CodeBrise",
+    description:
+      "CodeBrise is an independent software studio combining editorial clarity, tactile digital craft, and deliberate software engineering.",
+    url: getCanonicalUrl("/about"),
+    images: ["/og-image.png"],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "About the Studio — Principles & Craft | CodeBrise",
+    description:
+      "CodeBrise is an independent software studio combining editorial clarity, tactile digital craft, and deliberate software engineering.",
+    images: ["/og-image.png"],
+  },
 };
 
 export default function AboutPage() {
+  const breadcrumbJsonLd = generateBreadcrumbJsonLd([
+    { name: "Home", path: "/" },
+    { name: "About", path: "/about" },
+  ]);
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
       <SiteHeader />
       <main className="flex-1 py-12 md:py-16">
         <div className="site-shell max-w-4xl">
