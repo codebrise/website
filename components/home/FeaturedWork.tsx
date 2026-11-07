@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import { AnimatePresence } from "motion/react";
+import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import type { Project } from "@/types/project";
 import { SectionHeading } from "@/components/content/SectionHeading";
 import { EmptyState } from "@/components/content/EmptyState";
@@ -13,6 +13,8 @@ interface FeaturedWorkProps {
 
 export function FeaturedWork({ initialProjects }: FeaturedWorkProps) {
   const [filter, setFilter] = React.useState<string>("all");
+
+  const shouldReduceMotion = useReducedMotion();
 
   const filteredProjects = React.useMemo(() => {
     if (filter === "all") return initialProjects;
@@ -38,27 +40,35 @@ export function FeaturedWork({ initialProjects }: FeaturedWorkProps) {
       />
 
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 -mt-2 mb-6">
-        <div className="flex flex-wrap gap-2" role="group" aria-label="Filter workbench projects">
+        <div className="flex flex-wrap gap-1.5" role="group" aria-label="Filter workbench projects">
           {[
             { id: "all", label: "Everything" },
             { id: "product", label: "Software" },
             { id: "developer", label: "Developer tools" },
             { id: "experiment", label: "Experiments" },
-          ].map((btn) => (
-            <button
-              key={btn.id}
-              type="button"
-              onClick={() => setFilter(btn.id)}
-              aria-pressed={filter === btn.id}
-              className={`px-3.5 py-2 rounded-full text-[10px] font-bold cursor-pointer transition-all duration-200 ${
-                filter === btn.id
-                  ? "bg-cb-ink text-white"
-                  : "bg-transparent text-[#727984] hover:text-cb-ink hover:bg-white/50"
-              }`}
-            >
-              {btn.label}
-            </button>
-          ))}
+          ].map((btn) => {
+            const isActive = filter === btn.id;
+            return (
+              <button
+                key={btn.id}
+                type="button"
+                onClick={() => setFilter(btn.id)}
+                aria-pressed={isActive}
+                className={`relative px-3.5 py-2 rounded-full text-[10px] font-bold cursor-pointer transition-colors duration-200 outline-none focus-visible:ring-2 focus-visible:ring-cb-violet ${
+                  isActive ? "text-white" : "text-[#727984] hover:text-cb-ink"
+                }`}
+              >
+                {isActive && (
+                  <motion.span
+                    layoutId={shouldReduceMotion ? undefined : "activeWorkbenchPill"}
+                    className="absolute inset-0 rounded-full bg-cb-ink shadow-sm"
+                    transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                  />
+                )}
+                <span className="relative z-10">{btn.label}</span>
+              </button>
+            );
+          })}
         </div>
 
         <span className="font-mono text-[9px] tracking-[0.08em] uppercase text-[#9299A2]">
