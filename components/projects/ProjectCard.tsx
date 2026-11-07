@@ -1,6 +1,9 @@
+"use client";
+
 import * as React from "react";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
+import { motion, useReducedMotion } from "motion/react";
 import type { Project } from "@/types/project";
 import { cn } from "@/lib/utils";
 import { ProjectStatus } from "./ProjectStatus";
@@ -19,6 +22,7 @@ export function ProjectCard({
   layout = "standard",
   className,
 }: ProjectCardProps) {
+  const shouldReduceMotion = useReducedMotion();
   const isJob = project.slug === "jobwhistle";
   const isSlip = project.slug === "sliprow";
   const isForm = project.slug === "formspindle";
@@ -31,9 +35,15 @@ export function ProjectCard({
   };
 
   return (
-    <article
+    <motion.article
+      layout={!shouldReduceMotion}
+      initial={shouldReduceMotion ? undefined : { opacity: 0, scale: 0.97 }}
+      animate={shouldReduceMotion ? undefined : { opacity: 1, scale: 1 }}
+      exit={shouldReduceMotion ? undefined : { opacity: 0, scale: 0.97 }}
+      whileHover={shouldReduceMotion ? undefined : { y: -6 }}
+      transition={{ duration: 0.35, ease: [0.22, 0.8, 0.24, 1] }}
       className={cn(
-        "group relative flex flex-col min-h-[435px] p-6 rounded-[var(--cb-radius-lg)] border border-cb-ink/10 transition-all duration-500 ease-out hover:-translate-y-1.5 hover:shadow-[0_24px_70px_rgba(26,31,43,0.12)]",
+        "group relative flex flex-col min-h-[435px] p-6 rounded-[var(--cb-radius-lg)] border border-cb-ink/10 transition-shadow duration-300 hover:shadow-[0_24px_70px_rgba(26,31,43,0.12)]",
         isJob && "bg-[#151D2B] text-white",
         isSlip && "bg-[#E6E5EE] text-[#171B27]",
         isForm && "bg-[#DCEEE8] text-[#152A2A]",
@@ -80,12 +90,11 @@ export function ProjectCard({
         <Link
           href={`/work/${project.slug}`}
           aria-label={`View ${project.name} details`}
-          className="flex items-center justify-center w-8 h-8 rounded-full border border-current opacity-65 transition-transform group-hover:scale-110 group-hover:opacity-100"
+          className="flex items-center justify-center w-8 h-8 rounded-full border border-current opacity-65 transition-all group-hover:scale-110 group-hover:opacity-100"
         >
           <ArrowUpRight className="size-3.5" aria-hidden="true" />
         </Link>
       </div>
-    </article>
+    </motion.article>
   );
 }
-

@@ -1,4 +1,7 @@
+"use client";
+
 import * as React from "react";
+import { AnimatePresence } from "motion/react";
 import type { Project } from "@/types/project";
 import { ProjectCard } from "@/components/projects/ProjectCard";
 import { EmptyState } from "@/components/content/EmptyState";
@@ -28,15 +31,16 @@ export function ProjectGrid({
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-      {projects.map((project) => (
-        <ProjectCard
-          key={project.slug}
-          project={project}
-          layout="standard"
-          className="col-span-1"
-        />
-      ))}
+      <AnimatePresence mode="popLayout">
+        {projects.map((project) => (
+          <ProjectCard
+            key={project.slug}
+            project={project}
+            layout="standard"
+            className="col-span-1"
+          />
+        ))}
+      </AnimatePresence>
     </div>
   );
 }
-

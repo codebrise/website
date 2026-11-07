@@ -1,6 +1,7 @@
 "use client";
 
 import * as React from "react";
+import { AnimatePresence } from "motion/react";
 import type { Project } from "@/types/project";
 import { SectionHeading } from "@/components/content/SectionHeading";
 import { EmptyState } from "@/components/content/EmptyState";
@@ -67,13 +68,15 @@ export function FeaturedWork({ initialProjects }: FeaturedWorkProps) {
 
       {filteredProjects.length > 0 ? (
         <div className="grid grid-cols-12 gap-4 md:gap-5">
-          {filteredProjects.map((project) => (
-            <ProjectCard
-              key={project.slug}
-              project={project}
-              layout="featured"
-            />
-          ))}
+          <AnimatePresence mode="popLayout">
+            {filteredProjects.map((project) => (
+              <ProjectCard
+                key={project.slug}
+                project={project}
+                layout="featured"
+              />
+            ))}
+          </AnimatePresence>
         </div>
       ) : (
         <EmptyState />
@@ -88,4 +91,3 @@ export function FeaturedWork({ initialProjects }: FeaturedWorkProps) {
     </section>
   );
 }
-
