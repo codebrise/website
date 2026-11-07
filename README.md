@@ -11,12 +11,24 @@
 - **Language**: TypeScript (strict mode)
 - **Styling**: Tailwind CSS v4 & custom design tokens
 - **Primitives**: shadcn/ui & @base-ui/react
+- **Motion**: Motion for React (`motion`) & GPU-accelerated CSS keyframes
 - **Typography**: DM Sans (Sans), Instrument Serif (Display), System Monospace
 - **Deployment**: Static Generation (`next build`)
 
 ---
 
-## 2. Directory Structure
+## 2. Documentation
+
+Comprehensive documentation guides are maintained in the [`docs/`](./docs) folder:
+- [Design System Specification](./docs/DESIGN-SYSTEM.md) — tokens, typography, surfaces, and branding rules.
+- [Content Architecture](./docs/CONTENT-MODEL.md) — project schemas, lifecycle states, and registry workflows.
+- [SEO & Technical Discoverability](./docs/SEO-GUIDE.md) — canonical URLs, JSON-LD structured data, RSS feed, and Open Graph previews.
+- [SEO Launch & Domain Checklist](./docs/SEO-LAUNCH-CHECKLIST.md) — post-domain acquisition DNS, Search Console, Bing, and Cloudflare analytics instructions.
+- [Motion & Interaction Guidelines](./docs/MOTION-GUIDELINES.md) — standards for spring physics, layout animations, and accessibility.
+
+---
+
+## 3. Directory Structure
 
 ```text
 website/
@@ -66,7 +78,7 @@ website/
 
 ---
 
-## 3. Content-Driven Workflow: Adding a New Product
+## 4. Content-Driven Workflow: Adding a New Product
 
 Adding a new product or project requires **zero changes to UI components**:
 
@@ -114,7 +126,7 @@ export const products = [jobwhistle, sliprow, formspindle, myNewProject];
 
 ---
 
-## 4. Development & Production Build
+## 5. Development & Production Build
 
 ```bash
 # Install dependencies
