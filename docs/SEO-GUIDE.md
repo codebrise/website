@@ -50,3 +50,4 @@ Structured data is rendered as valid schema.org objects injected via `<script ty
 - Never use relative paths for `canonical` or `og:url` tags.
 - Always use `getCanonicalUrl("/subpath")`.
 - Root trailing slashes are normalized to prevent duplicate content flags between `codebrise.com` and `codebrise.com/`.
+

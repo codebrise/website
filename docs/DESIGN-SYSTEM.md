@@ -75,3 +75,4 @@ The typography system pairs two Google Fonts loaded via Next.js `next/font/googl
 
 ### Layout Shell
 - Global content container: `.site-shell` (`max-w-[1240px]` with fluid responsive padding `clamp(1rem, 4vw, 3rem)`).
+

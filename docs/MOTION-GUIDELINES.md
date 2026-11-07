@@ -67,3 +67,4 @@ We treat `prefers-reduced-motion` as a first-class requirement across the studio
 1. **Client Islands Only**: Never convert entire page trees into `"use client"`. Keep pages as React Server Components, isolating Motion inside lightweight leaf components (e.g. `ScrollReveal.tsx`, `ProjectGrid.tsx`, `MobileNavigation.tsx`).
 2. **GPU Optimization**: Animate only `transform` (`x`, `y`, `scale`) and `opacity`. Never animate `width`, `height`, `top`, or `left`.
 3. **Scroll Jitter Prevention**: Use `viewport={{ once: true, margin: "-40px" }}` so elements do not re-trigger animations as the user scrolls up and down.
+

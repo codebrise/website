@@ -128,3 +128,4 @@ export const myProject: Project = {
 - `visibility: "unlisted"`: Accessible via direct `/work/[slug]` URL, but hidden from the index and excluded from sitemap.
 - `status: "live"`: Represents a launched product; emits `SoftwareApplication` JSON-LD schema with live call-to-actions.
 - `status: "concept"` or `"exploring"`: Emits `CreativeWork` JSON-LD schema; displays honest exploration badges to maintain studio credibility.
+
